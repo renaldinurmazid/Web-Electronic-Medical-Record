@@ -2,7 +2,10 @@
 
 namespace App\Http\Controllers;
 
+use App\Models\Obat;
+use App\Models\obatM;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Auth;
 
 class ObatController extends Controller
 {
@@ -13,8 +16,8 @@ class ObatController extends Controller
      */
     public function index()
     {
-        $x['title']='Data Obat';
-        return view('admin.dataobat.obat',$x);
+        $obat = obatM::all();
+        return view('admin.dataobat.obat', compact('obat'));
     }
 
     /**
@@ -24,7 +27,7 @@ class ObatController extends Controller
      */
     public function create()
     {
-        //
+        return view('admin.dataobat.obatcreate');
     }
 
     /**
@@ -35,29 +38,21 @@ class ObatController extends Controller
      */
     public function store(Request $request)
     {
-        //
+        $validatedData = $request->validate([
+            'nama_obat' => 'required',
+            'stok' => 'required',
+        ]);
+
+        obatM::create($validatedData);
+
+        return redirect()->route('obat.index')->with('success', 'Data peserta berhasil ditambahkan.');
     }
 
-    /**
-     * Display the specified resource.
-     *
-     * @param  int  $id
-     * @return \Illuminate\Http\Response
-     */
-    public function show($id)
-    {
-        //
-    }
-
-    /**
-     * Show the form for editing the specified resource.
-     *
-     * @param  int  $id
-     * @return \Illuminate\Http\Response
-     */
+    
     public function edit($id)
     {
-        //
+        $obat = obatM::find($id);
+        return view('admin.dataobat.obatedit', compact('obat'));
     }
 
     /**
@@ -69,7 +64,13 @@ class ObatController extends Controller
      */
     public function update(Request $request, $id)
     {
-        //
+        $o = obatM::findOrFail($id);
+        
+        $o->update([
+            'nama_obat' =>$request->nama_obat,
+            'stok' =>$request->stok,
+        ]);
+        return redirect()->route('obat.index')->with('success', 'Data peserta berhasil diperbarui.');
     }
 
     /**
@@ -80,6 +81,9 @@ class ObatController extends Controller
      */
     public function destroy($id)
     {
-        //
+        $o = obatM::findOrFail($id);
+        $o->delete();
+
+        return redirect()->route('obat.index')->with('success', 'Data berhasil dihapus.');
     }
 }

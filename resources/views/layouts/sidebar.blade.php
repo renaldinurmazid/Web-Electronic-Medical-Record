@@ -23,17 +23,17 @@
             <span>Data User</span></a>
     </li>
     <li class="nav-item">
-        <a class="nav-link" href="{{ route('kelas') }}">
+        <a class="nav-link" href="{{ route('kelas.index') }}">
             <i class="fas fa-fw fa-university"></i>
             <span>Data Kelas</span></a>
     </li>
     <li class="nav-item">
-        <a class="nav-link" href="{{ route('siswa') }}">
+        <a class="nav-link" href="{{ route('siswa.index') }}">
             <i class="fas fa-fw fa-users"></i>
             <span>Data Siswa</span></a>
     </li>
     <li class="nav-item">
-        <a class="nav-link" href="{{ route('obats') }}">
+        <a class="nav-link" href="{{ route('obat.index') }}">
             <i class="fas fa-fw fa-tablets"></i>
             <span>Data Obat</span></a>
     </li>
@@ -45,17 +45,17 @@
             <span>Dashboard</span></a>
     </li>
     <li class="nav-item">
-        <a class="nav-link" href="{{ route('kelas') }}">
+        <a class="nav-link" href="{{ route('kelas.index') }}">
             <i class="fas fa-fw fa-university"></i>
             <span>Data Kelas</span></a>
     </li>
     <li class="nav-item">
-        <a class="nav-link" href="{{ route('siswa') }}">
+        <a class="nav-link" href="{{ route('siswa.index') }}">
             <i class="fas fa-fw fa-users"></i>
             <span>Data Siswa</span></a>
     </li>
     <li class="nav-item">
-        <a class="nav-link" href="{{ route('obats') }}">
+        <a class="nav-link" href="{{ route('obat.index') }}">
             <i class="fas fa-fw fa-tablets"></i>
             <span>Data Obat</span></a>
     </li>

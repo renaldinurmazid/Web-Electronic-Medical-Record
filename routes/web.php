@@ -41,18 +41,46 @@ Route::middleware(['auth', 'role:admin'])->group(function () {
 Route::middleware(['auth', 'role:admin'])->group(function () {
     Route::get('users', [UserController::class, 'index'])->name('users');
 });
+
 //Kelas Controller Admin
 Route::middleware(['auth'])->group(function () {
-    Route::get('kelas', [KelasController::class, 'index'])->name('kelas');
+    Route::get('kelas', [KelasController::class, 'index'])->name('kelas.index');
+     // Create
+     Route::get('/kelas/create', [KelasController::class, 'create'])->name('kelas.create');
+     Route::post('/kelas/store', [KelasController::class, 'store'])->name('kelas.store');
+     // Edit
+     Route::get('/kelas/edit/{id}', [KelasController::class, 'edit'])->name('kelas.edit');
+     Route::put('/kelas/{id}', [KelasController::class, 'update'])->name('kelas.update');
+     // Delete
+     Route::delete('/kelas/{id}', [KelasController::class, 'destroy'])->name('kelas.destroy');
 });
+
 //obats Controller Admin
 Route::middleware(['auth'])->group(function () {
-    Route::get('obats', [ObatController::class, 'index'])->name('obats');
+    Route::get('obat', [ObatController::class, 'index'])->name('obat.index');
+     // Create
+     Route::get('/obat/create', [ObatController::class, 'create'])->name('obat.create');
+     Route::post('/obat/store', [ObatController::class, 'store'])->name('obat.store');
+     // Edit
+     Route::get('/obat/edit/{id}', [ObatController::class, 'edit'])->name('obat.edit');
+     Route::put('/obat/{id}', [ObatController::class, 'update'])->name('obat.update');
+     // Delete
+     Route::delete('/obat/{id}', [ObatController::class, 'destroy'])->name('obat.destroy');
 });
+
 //siswa Controller Admin
 Route::middleware(['auth'])->group(function () {
-    Route::get('siswa', [SiswaController::class, 'index'])->name('siswa');
+    Route::get('siswa', [SiswaController::class, 'index'])->name('siswa.index');
+    // Create
+    Route::get('/siswa/create', [SiswaController::class, 'create'])->name('siswa.create');
+    Route::post('/siswa/store', [SiswaController::class, 'store'])->name('siswa.store');
+    // Edit
+    Route::get('/siswa/edit/{id}', [SiswaController::class, 'edit'])->name('siswa.edit');
+    Route::put('/siswa/{id}', [SiswaController::class, 'update'])->name('siswa.update');
+    // Delete
+    Route::delete('/siswa/{id}', [SiswaController::class, 'destroy'])->name('siswa.destroy');
 });
+
 // Dashboard Controller Petugas
 Route::middleware(['auth', 'role:petugas'])->group(function () {
     Route::get('petugas/home', [DashboardP::class, 'index'])->name('petugas.dashboard');
