@@ -11,13 +11,15 @@ use Illuminate\Support\Facades\Auth;
 class KelasController extends Controller
 {
     public function index(){
+        $x['title']='Data Kelas';
         $kelas = kelasM::all();
-        return view('admin.datakelas.kelas', compact('kelas'));
+        return view('admin.datakelas.kelas', compact('kelas'), $x);
     }
 
     public function create()
     {
-        return view('admin.datakelas.kelascreate');
+        $x['title']='Tambah Kelas';
+        return view('admin.datakelas.kelascreate', $x);
     }
 
     public function store(Request $request)
@@ -35,8 +37,9 @@ class KelasController extends Controller
 
     public function edit($id)
     {
+        $x['title']='Edit Kelas';
         $kelas = kelasM::find($id);
-        return view('admin.datakelas.kelasedit', compact('kelas'));
+        return view('admin.datakelas.kelasedit', compact('kelas'), $x);
     }
 
     public function update(Request $request, $id)

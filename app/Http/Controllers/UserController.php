@@ -2,7 +2,9 @@
 
 namespace App\Http\Controllers;
 
+use App\Models\User;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Hash;
 
 class UserController extends Controller
 {
@@ -14,6 +16,7 @@ class UserController extends Controller
     public function index()
     {
         $x['title']='Data User';
+        $x['users']=User::all();
         return view('admin.users.user',$x);
     }
 
@@ -24,7 +27,8 @@ class UserController extends Controller
      */
     public function create()
     {
-        //
+        $x['title']='Tambah User';
+        return view('admin.users.user_create',$x);
     }
 
     /**
@@ -35,7 +39,23 @@ class UserController extends Controller
      */
     public function store(Request $request)
     {
-        //
+        $request->validate([
+            'name' => 'required',
+            'email' => 'required|unique:users',
+            'password' => 'required',
+            'role' => 'required',
+        ]);
+
+        $user = new User([
+            'name' => $request->name,
+            'email' => $request->email,
+            'password' => Hash::make($request->password),
+            'role' => $request->role,
+
+        ]);
+        $user->save();
+
+        return redirect()->route('users')->with('success', 'Registration success. Please login!');
     }
 
     /**
@@ -46,7 +66,9 @@ class UserController extends Controller
      */
     public function show($id)
     {
-        //
+        $x['title']='Edit User';
+        $x['users']=User::findOrFail($id);
+        return view('admin.users.user_edit',$x);
     }
 
     /**
@@ -69,7 +91,26 @@ class UserController extends Controller
      */
     public function update(Request $request, $id)
     {
-        //
+        $user = User::findOrFail($id);
+
+        $request->validate([
+            'name' => 'required',
+            'email' => 'required|unique:users,email,' . $id, // Ignore unique rule for current user
+            'password' => 'nullable', // Password is optional during update
+            'role' => 'required',
+        ]);
+
+        $user->name = $request->name;
+        $user->email = $request->email;
+        
+        if ($request->has('password')) {
+            $user->password = Hash::make($request->password);
+        }
+
+        $user->role = $request->role;
+        $user->save();
+
+        return redirect()->route('users')->with('success', 'User updated successfully!');
     }
 
     /**
@@ -80,6 +121,8 @@ class UserController extends Controller
      */
     public function destroy($id)
     {
-        //
+        $x['user']=User::findOrFail($id);
+        $x['user']->delete();
+        return redirect()->route('users')->with('success', 'User deleted successfully!');
     }
 }

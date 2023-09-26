@@ -40,6 +40,11 @@ Route::middleware(['auth', 'role:admin'])->group(function () {
 //User Controller Admin
 Route::middleware(['auth', 'role:admin'])->group(function () {
     Route::get('users', [UserController::class, 'index'])->name('users');
+    Route::get('users/create', [UserController::class, 'create'])->name('user.create');
+    Route::post('users/store', [UserController::class, 'store'])->name('user.store');
+    Route::get('users/edit/{id}', [UserController::class, 'show'])->name('user.edit');
+    Route::put('users/update/{id}', [UserController::class, 'update'])->name('user.update');
+    Route::delete('users/destroy/{id}', [UserController::class, 'destroy'])->name('user.destroy');
 });
 
 //Kelas Controller Admin

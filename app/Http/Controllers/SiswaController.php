@@ -19,7 +19,8 @@ class SiswaController extends Controller
         $siswa = siswaM::all();
         $obatList = obatM::all();
         $kelasList = kelasM::all(); 
-        return view('admin.datasiswa.datasiswa', compact('siswa','obatList','kelasList'));
+        $x['title']='Data Siswa';
+        return view('admin.datasiswa.datasiswa', compact('siswa','obatList','kelasList'), $x);
     }
 
     /**
@@ -32,7 +33,8 @@ class SiswaController extends Controller
         $obatList = obatM::all();
         $kelasList = kelasM::all(); 
         $siswa = siswaM::all();
-        return view('admin.datasiswa.datasiswacreate', compact( 'kelasList', 'obatList'));
+        $x['title']='Tambah Datasiswa';
+        return view('admin.datasiswa.datasiswacreate', compact( 'kelasList', 'obatList'), $x);
     }
 
     /**
@@ -78,10 +80,11 @@ class SiswaController extends Controller
      */
     public function edit($id)
     {
+        $x['title']='Edit Datasiswa';
         $obatList = obatM::all();
         $kelasList = kelasM::all();
         $siswa = siswaM::find($id);
-        return view('admin.datasiswa.datasiswaedit', compact('siswa','kelasList', 'obatList'));
+        return view('admin.datasiswa.datasiswaedit', compact('siswa','kelasList', 'obatList'), $x);
     }
 
     /**

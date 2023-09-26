@@ -17,7 +17,8 @@ class ObatController extends Controller
     public function index()
     {
         $obat = obatM::all();
-        return view('admin.dataobat.obat', compact('obat'));
+        $x['title']='Data Obat';
+        return view('admin.dataobat.obat', compact('obat'), $x);
     }
 
     /**
@@ -27,7 +28,8 @@ class ObatController extends Controller
      */
     public function create()
     {
-        return view('admin.dataobat.obatcreate');
+        $x['title']='Tambah Obat';
+        return view('admin.dataobat.obatcreate', $x);
     }
 
     /**
@@ -52,7 +54,8 @@ class ObatController extends Controller
     public function edit($id)
     {
         $obat = obatM::find($id);
-        return view('admin.dataobat.obatedit', compact('obat'));
+        $x['title']='Edit Obat';
+        return view('admin.dataobat.obatedit', compact('obat'), $x);
     }
 
     /**
