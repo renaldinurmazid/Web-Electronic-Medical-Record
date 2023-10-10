@@ -2,20 +2,43 @@
 @section('content')
 <h1 class="h3 mb-4 text-gray-800">SISWA</h1>
 <a href="{{ url('siswa/create') }}" class="btn btn-sm btn-primary"><i class="fas fa-plus"></i> Tambah</a>
+    {{-- Search --}}
+    <form class="d-inline-block d-sm-inline-block form-inline float-right">
+        <div class="input-group">
+            <input type="search" name="search" value="{{ $vcari }}" class="form-control bg-light border-0 small shadow" placeholder="Cari nama dan NISN"
+                aria-label="Search" aria-describedby="basic-addon2">
+            <div class="input-group-append">
+                <button type="submit" class="btn btn-primary d-none d-sm-block" type="button">
+                    <i class="fas fa-search fa-sm"></i>
+                </button>
+                <button type="submit" class="btn btn-primary btn-sm d-block d-sm-none" type="button">
+                    <i class="fas fa-search fa-sm"></i>
+                </button>
+                <a href="{{ url('siswa')}}" class="btn btn-danger d-none d-sm-block" type="button">
+                    <i class="fas fa-history fa-sm"></i>
+                </a>
+                <a href="{{ url('siswa')}}" class="btn btn-danger btn-sm d-block d-sm-none" type="button">
+                    <i class="fas fa-history fa-sm"></i>
+                </a>
+            </div>
+        </div>
+    </form>
+    
 <br><br>
 <div class="card shadow mb-4">
+    
     <div class="card-header py-3">
         <h6 class="m-0 font-weight-bold text-primary">Data Siswa</h6>
     </div>
     <div class="card-body">
+        
         @if ($message = Session::get('success'))
         <script>
             $(document).ready(function () {
-                var message = {
-                    !!json_encode(Session::get('success')) !!
-                };
+                var message = @json(Session::get('success')); 
                 if (message) {
-                    Swal.fire({
+                    // Use sweetAlert instead of Swal.fire
+                    swal({
                         icon: 'success',
                         title: 'Success Message',
                         text: message,
@@ -23,11 +46,11 @@
                     });
                 }
             });
-
         </script>
         @endif
+        
         <div class="table-responsive">
-            <table class="table table-bordered" id="dataTable" width="100%" cellspacing="0">
+            <table class="table table-bordered text-nowrap" id="dataTable" width="100%" cellspacing="0">
                 <thead>
                     <tr class="text-center">
                         <th>No</th>
@@ -87,7 +110,7 @@
                                 </form>
                                 <a href="{{ route('siswa.edit', ['id' => $s->id]) }}" class="btn btn-success btn-sm"><i
                                         class="fas fa-edit"></i></a>
-                                <a href="" class="btn btn-primary btn-sm"><i class="fas fa fa-print"
+                                <a href="{{ route('siswa.pdf', ['id' => $s->id]) }}" class="btn btn-primary btn-sm"><i class="fas fa fa-print"
                                         style="padding-right: 5px;"></i></a>
                             </div>
                         </td>

@@ -5,6 +5,8 @@ namespace App\Http\Controllers;
 use App\Models\kelasM;
 use App\Models\obatM;
 use App\Models\siswaM;
+use Barryvdh\DomPDF\Facade\Pdf as FacadePdf;
+use PDF;
 use Illuminate\Http\Request;
 
 class SiswaController extends Controller
@@ -16,11 +18,13 @@ class SiswaController extends Controller
      */
     public function index()
     {
-        $siswa = siswaM::all();
+        $siswa = siswaM::search(request('search'))
+        ->paginate(10);
+        $vcari = request('search');
         $obatList = obatM::all();
         $kelasList = kelasM::all(); 
         $x['title']='Data Siswa';
-        return view('admin.datasiswa.datasiswa', compact('siswa','obatList','kelasList'), $x);
+        return view('admin.datasiswa.datasiswa', compact('siswa','obatList','kelasList','vcari'), $x);
     }
 
     /**
@@ -123,5 +127,11 @@ class SiswaController extends Controller
         $s->delete();
 
         return redirect()->route('siswa.index')->with('success', 'Data berhasil dihapus.');
+    }
+    
+    public function pdf($id){
+        $s = siswaM::findOrFail($id);
+        $pdf = FacadePdf::loadview('admin.suratpdf', ['s' => $s]);
+        return $pdf-> stream('surat-izin.pdf');
     }
 }

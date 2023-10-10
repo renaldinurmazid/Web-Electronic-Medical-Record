@@ -4,10 +4,11 @@ namespace App\Models;
 
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
+use Laravel\Scout\Searchable;
 
 class siswaM extends Model
 {
-    use HasFactory;
+    use HasFactory , Searchable;
     protected $table = 'siswa';
     protected $fillable =
     [
@@ -21,5 +22,20 @@ class siswaM extends Model
     public function class2()
     {
         return $this->belongsTo(obatM::class, 'obat_id');
+    }
+
+    // Search
+    public function searchableAs()
+    {
+        return 'siswa';
+    }
+
+    public function toSearchableArray()
+    {
+        
+        return [
+            'nisn' =>$this->nisn,
+            'nama_lengkap' =>$this->nama_lengkap,
+        ];
     }
 }

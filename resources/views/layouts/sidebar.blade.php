@@ -6,7 +6,7 @@
         <div class="sidebar-brand-icon">
             <img src="{{ asset('emr.png') }}" alt="" width="70px" height="70px">
         </div>
-        <div class="sidebar-brand-text mx-3">UKS<br>SMKN 1 SUBANG</div>
+        <div class="side    bar-brand-text mx-3">UKS<br>SMKN 1 SUBANG</div>
     </a>
     <!-- Divider -->
     <hr class="sidebar-divider my-0">

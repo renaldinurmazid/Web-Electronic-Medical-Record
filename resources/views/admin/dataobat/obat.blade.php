@@ -2,6 +2,27 @@
 @section('content')
 <h1 class="h3 mb-4 text-gray-800">OBAT</h1>
 <a href="{{ url('obat/create') }}" class="btn btn-sm btn-primary"><i class="fas fa-plus"></i> Tambah</a>
+{{-- Search --}}
+<form class="d-inline-block d-sm-inline-block form-inline float-right">
+    <div class="input-group">
+        <input type="search" name="search" value="{{ $vcari }}" class="form-control bg-light border-0 small shadow" placeholder="Cari Nama Obat
+                aria-label="Search" aria-describedby="basic-addon2">
+            <div class="input-group-append">
+                <button type="submit" class="btn btn-primary d-none d-sm-block" type="button">
+                    <i class="fas fa-search fa-sm"></i>
+                </button>
+                <button type="submit" class="btn btn-primary btn-sm d-block d-sm-none" type="button">
+                    <i class="fas fa-search fa-sm"></i>
+                </button>
+                <a href="{{ url('obat')}}" class="btn btn-danger d-none d-sm-block" type="button">
+                    <i class="fas fa-history fa-sm"></i>
+                </a>
+                <a href="{{ url('obat')}}" class="btn btn-danger btn-sm d-block d-sm-none" type="button">
+                    <i class="fas fa-history fa-sm"></i>
+                </a>
+            </div>
+    </div>
+</form>
 <br><br>
 <div class="card shadow mb-4">
     <div class="card-header py-3">
@@ -11,9 +32,10 @@
         @if ($message = Session::get('success'))
         <script>
             $(document).ready(function () {
-                var message = {!! json_encode(Session::get('success')) !!};
+                var message = @json(Session::get('success')); 
                 if (message) {
-                    Swal.fire({
+                    // Use sweetAlert instead of Swal.fire
+                    swal({
                         icon: 'success',
                         title: 'Success Message',
                         text: message,
@@ -21,7 +43,7 @@
                     });
                 }
             });
-        </script>                                                                                                                                                     
+        </script>
         @endif
         <div class="table-responsive">
             <table class="table table-hover text-nowrap table-bordered">

@@ -16,9 +16,11 @@ class ObatController extends Controller
      */
     public function index()
     {
-        $obat = obatM::all();
+        $obat = obatM::search(request('search'))
+        ->paginate(10);
+        $vcari = request('search');
         $x['title']='Data Obat';
-        return view('admin.dataobat.obat', compact('obat'), $x);
+        return view('admin.dataobat.obat', compact('obat','vcari'), $x);
     }
 
     /**
@@ -47,7 +49,7 @@ class ObatController extends Controller
 
         obatM::create($validatedData);
 
-        return redirect()->route('obat.index')->with('success', 'Data peserta berhasil ditambahkan.');
+        return redirect()->route('obat.index')->with('success', 'Data Obat ditambahkan.');
     }
 
     
@@ -73,7 +75,7 @@ class ObatController extends Controller
             'nama_obat' =>$request->nama_obat,
             'stok' =>$request->stok,
         ]);
-        return redirect()->route('obat.index')->with('success', 'Data peserta berhasil diperbarui.');
+        return redirect()->route('obat.index')->with('success', 'Data Obat diperbarui.');
     }
 
     /**
@@ -87,6 +89,6 @@ class ObatController extends Controller
         $o = obatM::findOrFail($id);
         $o->delete();
 
-        return redirect()->route('obat.index')->with('success', 'Data berhasil dihapus.');
+        return redirect()->route('obat.index')->with('success', 'Data Obat dihapus.');
     }
 }

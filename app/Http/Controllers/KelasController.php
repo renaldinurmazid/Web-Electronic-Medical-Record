@@ -12,8 +12,10 @@ class KelasController extends Controller
 {
     public function index(){
         $x['title']='Data Kelas';
-        $kelas = kelasM::all();
-        return view('admin.datakelas.kelas', compact('kelas'), $x);
+        $kelas = kelasM::search(request('search'))
+        ->paginate(10);
+        $vcari = request('search');
+        return view('admin.datakelas.kelas', compact('kelas','vcari'), $x);
     }
 
     public function create()
@@ -30,7 +32,7 @@ class KelasController extends Controller
 
         kelasM::create($validatedData);
 
-        return redirect()->route('kelas.index')->with('success', 'Data peserta berhasil ditambahkan.');
+        return redirect()->route('kelas.index')->with('success', 'Data Kelas berhasil ditambahkan.');
 
         
     }
@@ -49,7 +51,7 @@ class KelasController extends Controller
         $k->update([
             'namakelas' =>$request->namakelas,
         ]);
-        return redirect()->route('kelas.index')->with('success', 'Data peserta berhasil diperbarui.');
+        return redirect()->route('kelas.index')->with('success', 'Data Kelas berhasil diperbarui.');
     }
 
     public function destroy($id)
@@ -57,7 +59,7 @@ class KelasController extends Controller
         $k = kelasM::findOrFail($id);
         $k->delete();
 
-        return redirect()->route('kelas.index')->with('success', 'Data berhasil dihapus.');
+        return redirect()->route('kelas.index')->with('success', 'Data Kelas berhasil dihapus.');
     }
 
 }
