@@ -11,7 +11,7 @@ class obatM extends Model
     use HasFactory,Searchable;
     protected $table = 'obat';
     protected $fillable = [
-       'id','nama_obat','stok'
+       'id','nama_obat','manfaat','stok'
     ];
 
     public function siswa()

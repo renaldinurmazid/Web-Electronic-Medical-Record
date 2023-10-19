@@ -2,6 +2,10 @@
 
 namespace App\Http\Controllers;
 
+use App\Models\kelasM;
+use App\Models\obatM;
+use App\Models\siswaM;
+use App\Models\User;
 use Illuminate\Http\Request;
 
 class DashboardA extends Controller
@@ -14,8 +18,13 @@ class DashboardA extends Controller
      */
     public function index()
     {
+        $totalUser = User::count();
+        $totalSiswa = siswaM::count();
+        $totalKelas = kelasM::count();
+        $totalObat = obatM::count();
+        $dataObat = obatM::all();
         $x['title'] = 'Dashboard Admin';
-        return view('admin.dashboard', $x);
+        return view('admin.dashboard', $x , compact('totalUser','totalSiswa','totalKelas','totalObat','dataObat'));
     }
 
     /**

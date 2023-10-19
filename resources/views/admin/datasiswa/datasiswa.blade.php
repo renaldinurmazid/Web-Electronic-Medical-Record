@@ -86,13 +86,13 @@
                         <td>{{ $s->alamat }}</td>
                         <td>
                             <div class="d-flex">
-                                <form action="">
-                                    <button class="btn btn-success btn-sm">Sembuh</button>
+                                <form method="POST" action="" class="status-form">
+                                    <button type="submit" name="status" value="Sembuh" class="sembuh-button btn btn-success btn-sm ">Sembuh</button> 
                                 </form>
-                                <form action="">
-                                    <button class="btn btn-primary btn-sm mx-2">Pulang</button>
+                                <form method="POST" action="" class="status-form">
+                                    <button type="submit" name="status" value="Pulang" class="pulang-button btn btn-primary btn-sm mx-2 ">Pulang</button>
                                 </form>
-                            </div>
+                            </div>                                                   
                         </td>
                         <td>
                             <div class="d-flex">

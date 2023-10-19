@@ -9,7 +9,7 @@
                     <div class="col mr-2">
                         <div class="text-xs font-weight-bold text-primary text-uppercase mb-1">
                             User</div>
-                        <div class="h5 mb-0 font-weight-bold text-gray-800">5</div>
+                        <div class="h5 mb-0 font-weight-bold text-gray-800">{{ $totalUser}}</div>
                     </div>
                     <div class="col-auto">
                         <i class="fas fa-user fa-2x text-gray-300"></i>
@@ -25,7 +25,7 @@
                     <div class="col mr-2">
                         <div class="text-xs font-weight-bold text-primary text-uppercase mb-1">
                             Data Kelas</div>
-                        <div class="h5 mb-0 font-weight-bold text-gray-800">10</div>
+                        <div class="h5 mb-0 font-weight-bold text-gray-800">{{ $totalKelas}}</div>
                     </div>
                     <div class="col-auto">
                         <i class="fas fa-university fa-2x text-gray-300"></i>
@@ -41,10 +41,10 @@
                     <div class="col mr-2">
                         <div class="text-xs font-weight-bold text-primary text-uppercase mb-1">
                             Data Siswa</div>
-                        <div class="h5 mb-0 font-weight-bold text-gray-800">100</div>
+                        <div class="h5 mb-0 font-weight-bold text-gray-800">{{ $totalSiswa}}</div>
                     </div>
                     <div class="col-auto">
-                        <i class="fas fa-users fa-2x text-gray-300"></i>
+                        <i class="fas fa-users fcha-2x text-gray-300"></i>
                     </div>
                 </div>
             </div>
@@ -57,7 +57,7 @@
                     <div class="col mr-2">
                         <div class="text-xs font-weight-bold text-primary text-uppercase mb-1">
                             Data Obat</div>
-                        <div class="h5 mb-0 font-weight-bold text-gray-800">100</div>
+                        <div class="h5 mb-0 font-weight-bold text-gray-800">{{ $totalObat}}</div>
                     </div>
                     <div class="col-auto">
                         <i class="fas fa-2x fa-tablets text-gray-300"></i>
@@ -81,13 +81,15 @@
                         <th>Jumlah Obat Terisa</th>
                     </tr>
                 </thead>
+                @foreach ($dataObat as $o)
                 <tbody>
                     <tr>
-                        <td>Tolak Angin Sidomuncul</td>
-                        <td>Meredakan Masuk Angin</td>
-                        <td>100</td>
+                        <td>{{ $o->nama_obat }}</td>
+                        <td>{{ $o->manfaat }}</td>
+                        <td>{{ $o->stok }}</td>
                     </tr>
                 </tbody>
+                @endforeach
             </table>
         </div>
     </div>
