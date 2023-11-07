@@ -85,6 +85,7 @@ Route::middleware(['auth'])->group(function () {
     // Delete
     Route::delete('/siswa/{id}', [SiswaController::class, 'destroy'])->name('siswa.destroy');
     Route::get('siswa/{id}/pdf', [SiswaController::class, 'pdf'])->name('siswa.pdf');
+    Route::put('siswa-update/{id}', [SiswaController::class, 'updateStatus'])->name('siswa.status');
 });
 
 // Dashboard Controller Petugas

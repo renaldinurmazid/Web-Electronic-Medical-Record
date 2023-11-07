@@ -5,8 +5,7 @@ namespace App\Http\Controllers;
 use App\Models\kelasM;
 use App\Models\obatM;
 use App\Models\siswaM;
-use Barryvdh\DomPDF\Facade\Pdf as FacadePdf;
-use PDF;
+use Barryvdh\DomPDF\Facade\Pdf;
 use Illuminate\Http\Request;
 
 class SiswaController extends Controller
@@ -26,6 +25,21 @@ class SiswaController extends Controller
         $x['title']='Data Siswa';
         return view('admin.datasiswa.datasiswa', compact('siswa','obatList','kelasList','vcari'), $x);
     }
+    public function updateStatus(Request $request, $id)
+    {
+        $status = $request->input('status');
+        $siswa = siswaM::find($id);
+
+        if ($siswa) {
+            $siswa->update(['status' => $status]);
+            return response()->json(['success' => true]);
+        }
+
+        return response()->json(['success' => false, 'message' => 'Data not found.']);
+    }
+
+    
+
 
     /**
      * Show the form for creating a new resource.
@@ -57,7 +71,7 @@ class SiswaController extends Controller
             'tanggal' => 'required|date',
             'obat_id' => 'required',
             'alamat' => 'required',
-            'status' => 'required',
+            // 'status' => 'required',
         ]);
 
         siswaM::create($validatedData);
@@ -131,7 +145,7 @@ class SiswaController extends Controller
     
     public function pdf($id){
         $s = siswaM::findOrFail($id);
-        $pdf = FacadePdf::loadview('admin.suratpdf', ['s' => $s]);
+        $pdf = Pdf::loadview('admin.suratpdf', ['s' => $s]);
         return $pdf-> stream('surat-izin.pdf');
     }
 }

@@ -46,10 +46,10 @@
                 <label for="alamat">Alamat</label>
                 <input type="text" id="alamat" class="form-control" name="alamat">
             </div>
-            <div class="form-group">
+            {{-- <div class="form-group">
                 <label for="status">Status</label>
                 <input type="text" class="form-control" id="status" name="status">
-            </div>
+            </div> --}}
             <button type="submit" class="btn btn-primary">Submit</button>
         </form>
       </div>
