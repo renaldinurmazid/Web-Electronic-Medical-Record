@@ -38,7 +38,7 @@
                 <select class="form-control" id="obat_id" name="obat_id">
                     <option value="" selected>Pilih</option>
                     @foreach($obatList as $obat)
-                        <option value="{{ $obat->id }}">{{ $obat->nama_obat }}</option>
+                        <option value="{{ $obat->id }}">{{ $obat->nama_obat }} - {{ $obat->manfaat }}</option>
                     @endforeach
                 </select>
             </div>
@@ -46,10 +46,14 @@
                 <label for="alamat">Alamat</label>
                 <input type="text" id="alamat" class="form-control" name="alamat">
             </div>
+<<<<<<< HEAD
             {{-- <div class="form-group">
                 <label for="status">Status</label>
                 <input type="text" class="form-control" id="status" name="status">
             </div> --}}
+=======
+            
+>>>>>>> d39edbe34c0913c39f1ce3cf4bb86c33599d7ba0
             <button type="submit" class="btn btn-primary">Submit</button>
         </form>
       </div>

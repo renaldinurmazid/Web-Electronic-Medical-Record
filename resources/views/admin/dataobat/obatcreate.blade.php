@@ -14,6 +14,10 @@
                 <input type="text" id="nama_obat" class="form-control" name="nama_obat">
             </div>
             <div class="form-group">
+                <label for="manfaat">Manfaat</label>
+                <input type="text" id="manfaat" class="form-control" name="manfaat">
+            </div>
+            <div class="form-group">
                 <label for="stok">Stok</label>
                 <input type="number" id="stok" class="form-control" name="stok">
             </div>

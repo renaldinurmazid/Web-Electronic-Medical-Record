@@ -87,6 +87,7 @@
                         <td>{{ $s->alamat }}</td>
                         <td>
                             <div class="d-flex">
+<<<<<<< HEAD
                                 @if ($s->status)
                                 <form action="{{ route('siswa.update', $s->id) }}" method="POST">
                                     @csrf
@@ -177,6 +178,15 @@
                                         data-confirm="Apakah Anda yakin ingin menandai sebagai 'Pulang'?">Pulang</button>
                                 </form> --}}
                             </div>
+=======
+                                <form method="POST" action="" class="status-form">
+                                    <button type="submit" name="status" value="Sembuh" class="sembuh-button btn btn-success btn-sm ">Sembuh</button> 
+                                </form>
+                                <form method="POST" action="" class="status-form">
+                                    <button type="submit" name="status" value="Pulang" class="pulang-button btn btn-primary btn-sm mx-2 ">Pulang</button>
+                                </form>
+                            </div>                                                   
+>>>>>>> d39edbe34c0913c39f1ce3cf4bb86c33599d7ba0
                         </td>
                         <td>
                             <div class="d-flex">

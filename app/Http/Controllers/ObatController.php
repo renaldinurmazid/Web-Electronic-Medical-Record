@@ -44,6 +44,7 @@ class ObatController extends Controller
     {
         $validatedData = $request->validate([
             'nama_obat' => 'required',
+            'manfaat' => 'required',
             'stok' => 'required',
         ]);
 
@@ -73,6 +74,7 @@ class ObatController extends Controller
         
         $o->update([
             'nama_obat' =>$request->nama_obat,
+            'manfaat' =>$request->manfaat,
             'stok' =>$request->stok,
         ]);
         return redirect()->route('obat.index')->with('success', 'Data Obat diperbarui.');

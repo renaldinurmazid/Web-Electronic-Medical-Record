@@ -51,6 +51,7 @@
                     <tr>
                         <th>No</th>
                         <th>Nama Obat</th>
+                        <th>Manfaat Obat</th>
                         <th>Stok</th>
                         <th>Action</th>
                     </tr>
@@ -60,6 +61,7 @@
                     <tr>
                         <td>{{ $loop->iteration }}</td>
                         <td>{{ $o->nama_obat }}</td>
+                        <td>{{ $o->manfaat }}</td>
                         <td>{{ $o->stok }}</td>
                         <td>
                             <a href="{{ route('obat.edit', ['id' => $o->id]) }}" class="btn btn-success btn-sm"><i class="fas fa-edit"></i></a> - 

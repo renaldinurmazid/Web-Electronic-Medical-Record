@@ -22,7 +22,7 @@ return new class extends Migration
             $table->date('tanggal');
             $table->bigInteger('obat_id');
             $table->string('alamat',255);
-            $table->string('status',255);
+            $table->string('status')->default('default_value_here');
             $table->timestamps();
         });
     }

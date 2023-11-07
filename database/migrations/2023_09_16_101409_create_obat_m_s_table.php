@@ -16,6 +16,7 @@ return new class extends Migration
         Schema::create('obat', function (Blueprint $table) {
             $table->id()->unsigned();
             $table->string('nama_obat', 255);
+            $table->string('manfaat', 255);
             $table->integer('stok');
             $table->timestamps();
         });

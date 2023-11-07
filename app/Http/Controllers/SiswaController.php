@@ -71,7 +71,11 @@ class SiswaController extends Controller
             'tanggal' => 'required|date',
             'obat_id' => 'required',
             'alamat' => 'required',
+<<<<<<< HEAD
             // 'status' => 'required',
+=======
+    
+>>>>>>> d39edbe34c0913c39f1ce3cf4bb86c33599d7ba0
         ]);
 
         siswaM::create($validatedData);
@@ -147,5 +151,20 @@ class SiswaController extends Controller
         $s = siswaM::findOrFail($id);
         $pdf = Pdf::loadview('admin.suratpdf', ['s' => $s]);
         return $pdf-> stream('surat-izin.pdf');
+    }
+
+    public function status(Request $request, siswaM $siswa)
+    {
+        // Get the value of the 'status' field from the request.
+        $status = $request->input('status');
+
+        // Check which button was clicked (Sembuh or Pulang) and update the status accordingly.
+        if ($status === 'Sembuh') {
+            $siswa->update(['status' => '1']);
+        } elseif ($status === 'Pulang') {
+            $siswa->update(['status' => '1']);
+        }
+
+        return redirect()->route('siswa.index')->with('success', 'Status updated successfully.');
     }
 }

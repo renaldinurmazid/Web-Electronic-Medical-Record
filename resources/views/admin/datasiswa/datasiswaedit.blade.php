@@ -46,10 +46,7 @@
                 <label for="alamat">Alamat</label>
                 <input type="text" id="alamat" class="form-control" name="alamat" value="{{ $siswa->alamat }}">
             </div>
-            <div class="form-group">
-                <label for="status">Status</label>
-                <input type="text" class="form-control" id="status" name="status" value="{{ $siswa->status }}">
-            </div>
+           
             <button type="submit" class="btn btn-primary" ata-toggle="modal" data-target="#modal-default">Submit</button>
         </form>
       </div>
