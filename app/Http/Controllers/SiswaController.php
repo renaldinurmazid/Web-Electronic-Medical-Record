@@ -71,11 +71,7 @@ class SiswaController extends Controller
             'tanggal' => 'required|date',
             'obat_id' => 'required',
             'alamat' => 'required',
-<<<<<<< HEAD
             // 'status' => 'required',
-=======
-    
->>>>>>> d39edbe34c0913c39f1ce3cf4bb86c33599d7ba0
         ]);
 
         siswaM::create($validatedData);

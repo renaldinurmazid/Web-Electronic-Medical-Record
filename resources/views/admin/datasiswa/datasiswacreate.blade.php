@@ -46,14 +46,6 @@
                 <label for="alamat">Alamat</label>
                 <input type="text" id="alamat" class="form-control" name="alamat">
             </div>
-<<<<<<< HEAD
-            {{-- <div class="form-group">
-                <label for="status">Status</label>
-                <input type="text" class="form-control" id="status" name="status">
-            </div> --}}
-=======
-            
->>>>>>> d39edbe34c0913c39f1ce3cf4bb86c33599d7ba0
             <button type="submit" class="btn btn-primary">Submit</button>
         </form>
       </div>
