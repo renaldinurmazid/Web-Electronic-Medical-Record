@@ -5,7 +5,7 @@
 {{-- Search --}}
 <form class="d-inline-block d-sm-inline-block form-inline float-right">
     <div class="input-group">
-        <input type="search" name="search" value="{{ $vcari }}" class="form-control bg-light border-0 small shadow" placeholder="Cari Nama Obat
+        {{-- <input type="search" name="search" value="{{ $vcari }}" class="form-control bg-light border-0 small shadow" placeholder="Cari Nama Obat
                 aria-label="Search" aria-describedby="basic-addon2">
             <div class="input-group-append">
                 <button type="submit" class="btn btn-primary d-none d-sm-block" type="button">
@@ -20,7 +20,7 @@
                 <a href="{{ url('obat')}}" class="btn btn-danger btn-sm d-block d-sm-none" type="button">
                     <i class="fas fa-history fa-sm"></i>
                 </a>
-            </div>
+            </div> --}}
     </div>
 </form>
 <br><br>
@@ -46,7 +46,7 @@
         </script>
         @endif
         <div class="table-responsive">
-            <table class="table table-hover text-nowrap table-bordered">
+            <table id="myTable" class="table table-hover text-nowrap table-bordered">
                 <thead>
                     <tr>
                         <th>No</th>

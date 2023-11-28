@@ -5,7 +5,7 @@
 {{-- Search --}}
 <form class="d-inline-block d-sm-inline-block form-inline float-right">
     <div class="input-group">
-        <input type="search" name="search" value="{{ $vcari }}" class="form-control bg-light border-0 small shadow"
+        {{-- <input type="search" name="search" value="{{ $vcari }}" class="form-control bg-light border-0 small shadow"
             placeholder="Cari nama dan NISN" aria-label="Search" aria-describedby="basic-addon2">
         <div class="input-group-append">
             <button type="submit" class="btn btn-primary d-none d-sm-block" type="button">
@@ -20,7 +20,7 @@
             <a href="{{ url('siswa')}}" class="btn btn-danger btn-sm d-block d-sm-none" type="button">
                 <i class="fas fa-history fa-sm"></i>
             </a>
-        </div>
+        </div> --}}
     </div>
 </form>
 
@@ -51,7 +51,7 @@
         @endif
 
         <div class="table-responsive">
-            <table class="table table-bordered text-nowrap" id="dataTable" width="100%" cellspacing="0">
+            <table class="table table-bordered text-nowrap" id="myTable" width="100%" cellspacing="0">
                 <thead>
                     <tr class="text-center">
                         <th>No</th>
