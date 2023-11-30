@@ -8,7 +8,7 @@
     </div>
     <div class="card-body">
         <div class="table-responsive">
-            <table class="table table-bordered" id="myTable" width="100%" cellspacing="0">
+            <table class="table table-bordered text-nowrap" id="myTable" width="100%" cellspacing="0">
                 <thead>
                     <tr class="text-center">
                         <th>Nama Lengkap</th>
